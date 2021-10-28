@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <meta  name ="viewport" content ="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+
+
+    <title>海丝之路</title>
+
+    <script type="text/javascript">
+     
+     document.addEventListener('plusready', function(){
+      //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+      
+     });
+     
+    </script>
+</head>
+<body>
+ <script src="js/pixi.min.js"></script>
+    <script>
+     //添加图片
+     //var x=window.screen.width;
+     //var y=window.screen.height;
+     //var app = new PIXI.Application(x,y);
+
+
+
+        var app = new PIXI.Application(1080/3,2240/3);
+        document.body.appendChild(app.view);
+        
+        //开始界面
+        
+        
+        var kaishi = new PIXI.Sprite.fromImage("img/kaishi.png");
+        app.stage.addChild(kaishi);
+        kaishi.width = 1080/3;
+        kaishi.height = 2240/3;
+        
+        /*var anniu = new PIXI.Sprite.fromImage("img/anniu.png");
+        app.stage.addChild(anniu);
+        anniu.width = 300/3;
+        anniu.height = 300/3;
+        anniu.anchor.set(0.5,0.5);
+        anniu.x = 540/3;
+        anniu.y = 2000/3;*/
+        kaishi.interactive = true;
+        var b = 0;
+        kaishi.on("touchstart",huan);
+        //var b = 0;
+        function huan(){
+        	kaishi.visible = false;
+        	//anniu.visible = false;
+        	//var bg = new PIXI.Sprite.fromImage("img/changeback.png");
+        	//app.stage.addChild(bg);
+        	b=1;
+        	//var a=1;
+        	//b=a;
+        	//return b;
+        	if(b == 1){
+        		
+       
+        //bg.scale.x=0.8;
+        //bg.scale.y=0.8;
+        //bg.anchor.set(0.5,0.5);
+		var bg = new PIXI.Sprite.fromImage("img/changeback.png");
+        app.stage.addChild(bg);
+        //bg.scale.x=0.8;
+        //bg.scale.y=0.8;
+        bg.width=1080/3;
+        bg.height=2105/3;
+        
+        /*bg.visible = true;
+        
+        bg.interactive = true;
+        bg.on("click", see);
+        function see(){
+        	bg.visible = false;
+        }*/
+        var hua = new PIXI.Sprite.fromImage("img/hua.png");
+        app.stage.addChild(hua);
+        hua.scale.x=0.03;
+        hua.scale.y=0.03;
+        hua.anchor.set(0.5,0.5);
+        hua.x=200/3;
+        hua.y=1940/3;
+        hua.alpha=1;
+        
+        var jinli = new PIXI.Sprite.fromImage("img/jinli.png");
+        app.stage.addChild(jinli);
+        jinli.scale.x=0.03;
+        jinli.scale.y=0.03;
+        jinli.anchor.set(0.5,0.5);
+        jinli.y=1940/3;
+        jinli.x=580/3;
+        
+        var xiangyun = new PIXI.Sprite.fromImage("img/xiangyun.png");
+        app.stage.addChild(xiangyun);
+        xiangyun.scale.x=0.04;
+        xiangyun.scale.y=0.04;
+        xiangyun.anchor.set(0.5,0.5);
+        xiangyun.y=1940/3;
+        xiangyun.x=890/3;
+        xiangyun.alpha=1;
+        
+        var xianhe = new PIXI.Sprite.fromImage("img/xianhe.png");
+        app.stage.addChild(xianhe);
+        xianhe.scale.x=0.06;
+        xianhe.scale.y=0.06;
+        xianhe.anchor.set(0.5,0.5);
+        xianhe.y=1940/3;
+        xianhe.x=1200/3;
+        xianhe.visible = true;
+        
+        var tuan = new PIXI.Sprite.fromImage("img/tuan.png");
+        app.stage.addChild(tuan);
+        tuan.y=2105/3;
+        tuan.height=135/3;
+        tuan.width=540/3;
+        //tuan.alpha=0.5;
+        
+        var dise = new PIXI.Sprite.fromImage("img/dise.png");
+        app.stage.addChild(dise);
+        dise.y=2105/3;
+        dise.x=540/3;
+        dise.height=135/3;
+        dise.width=540/3;
+        dise.alpha=0.5;
+        
+        var back = new PIXI.Sprite.fromImage("img/back.png");
+        app.stage.addChild(back);
+        back.scale.x=0.08;
+        back.scale.y=0.08;
+        back.y=80/3;
+		back.x=60/3;
+        
+        var finish = new PIXI.Sprite.fromImage("img/finish.png");
+        app.stage.addChild(finish);
+        finish.scale.x=0.08;
+        finish.scale.y=0.08;
+        finish.y=80/3;
+        finish.x=830/3;
+        
+        /*var wancheng = new PIXI.Text("完成");
+        finish.addChild(wancheng);
+        wancheng.x = 20;
+        wancheng.y = 40;
+        wancheng.scale.x = 2;
+        wancheng.scale.y = 2;
+        wancheng.style.fontWeight = "bold";*/
+        
+        var chose = new PIXI.Text("滑动选择主题元素，展现不同纹饰");
+        bg.addChild(chose);
+        chose.x = 150;
+        chose.y = 1660;
+        chose.scale.x = 2;
+        chose.scale.y = 2;
+        //chose.style.fontSize = 7;
+        chose.style.fontWeight = "bold";
+        chose.style.fontFamily = "隶书";
+        
+        var xuantuan = new PIXI.Text("选图案");
+        tuan.addChild(xuantuan);
+        xuantuan.x = 150;
+        xuantuan.y = 40;
+        xuantuan.scale.x = 3;
+        xuantuan.scale.y = 3;
+        xuantuan.style.fontWeight = "bold";
+        xuantuan.style.fontFamily = "隶书";
+        
+        var xuandise = new PIXI.Text("选底色");
+        dise.addChild(xuandise);
+        xuandise.x = 150;
+        xuandise.y = 40;
+        xuandise.scale.x = 3;
+        xuandise.scale.y = 3;
+        xuandise.style.fontWeight = "bold";
+        xuandise.style.fontFamily = "隶书";
+        
+        //底栏
+        var a=0;
+        tuan.interactive = true;
+        dise.interactive=true;
+        tuan.on("touchstart", xuantu);
+        function xuantu(){
+        	a=1;
+        	if(a==1){
+        		tuan.alpha=1;
+        		dise.alpha=0.5;
+        	}
+        }
+        dise.on("touchstart", xuanse);
+        function xuanse(){
+        	a=2;
+        	if(a==2){
+        		dise.alpha=1;
+        		tuan.alpha=0.5;
+        	}
+        }
+
+		bg.interactive = true;
+        //jinli.addChild(hua);
+        //jinli.adddChild(xiangyun);
+        //jinli.addChild(xianhe);
+        var term1,term2;
+        bg.on("touchstart",move1);
+        //bo.on("mousestart",move1);
+        bg.on("click",move1);
+        function move1(event){
+         var pos1 = event.data.getLocalPosition(app.stage);
+         term1  = pos1.x;
+         console.log(term1);
+        }
+        
+        bg.on("touchend",move2);
+        //bg.on("mouseend",move2);
+        bg.on("click",move2);
+        function move2(event){
+         var pos2 = event.data.getLocalPosition(app.stage);
+         term2  = pos2.x;
+         console.log(term2);
+        }
+        
+        app.ticker.add(animate);
+        if((hua.x<=(540/3)) && (xianhe.x>=(540/3)))
+        {
+        	function animate(){
+        	//if((hua.x<=(540/3)) && (xianhe.x>=(540/3)))
+        	//{
+        		if(term1>term2)
+        		{
+        			jinli.x-=10;
+        			hua.x-=10;
+        			xiangyun.x-=10;
+        			xianhe.x-=10;
+        			if(xianhe.x<=890/3){
+        				hua.x=-110/3;
+        				jinli.x=270/3;
+        				xiangyun.x=580/3;
+        				xianhe.x=890/3;
+        			}
+        		}
+        		else if(term1<term2)
+        		{
+        			hua.x+=10;
+        			jinli.x+=10;
+        			xiangyun.x+=10;
+        			xianhe.x+=10;
+        			if(hua.x>=200/3){
+        				hua.x=200/3;
+        				jinli.x=580/3;
+        				xiangyun.x=890/3;
+        				xianhe.x=1200/3;
+        			}
+        		}
+        		else if(term1==term2)
+        		{
+        			
+        		}
+        	}
+        }
+        /* if(xianhe.x>=890/3)
+         {
+          jinli.x -=10/3;
+          xiangyun.x -=10/3;
+          xianhe.x -=10/3;
+          hua.x -=10/3;
+         }
+        
+        }*/
+        
+        /*function move(){
+        	document.addEventListener('touchmove', touch, false);
+        	function touch(event){
+        		var event = event||window.event;
+        	
+        		var oInp = document.getElementById("inp");
+        		event.preventDefault();
+        		oInp.innerHTML = "<br>Touch moved(" + event.touches[0].clentX + "," + event.touches[0].clientY + ")"
+        		if(hua.x<=(200/3)&&xianhe.x>=(890/3))
+         		{
+          			jinli.x -=10/3;
+          			xiangyun.x -=10/3;
+          			xianhe.x -=10/3;
+          			hua.x -=10/3;
+         		}
+        	}
+        }
+        window.addEventListener('move', move, false);*/
+        
+        
+        var ta=0;
+        //祥云
+        xiangyun.interactive = true;
+        
+        xiangyun.on("touchstart",show1);
+        function show1(){
+         if(ta==0)
+         {
+            //xiangyun.y=200/3;
+          ta = 1;
+         }
+        }
+        //仙鹤
+        xianhe.interactive = true;
+        xianhe.on("touchstart",show2);
+        function show2(){
+         if(ta==1)
+         {
+         	//xianhe.y=200/3;
+          ta =2;
+         }
+        }
+        //花
+        hua.interactive = true;
+        hua.on("touchstart",show3);
+        function show3(){
+         if(ta==2)
+         {
+         	//hua.y=200/3;
+          ta =3;
+         }
+        }
+        //锦鲤
+        jinli.interactive = true;
+        jinli.on("touchstart",show4);
+        function show4(){
+         if(ta==3)
+         {
+         	//jinli.y=200/3;
+          ta ==0;
+         }
+        }
+	
+	}
+}
+        
+        
+        //选择图案
+        
+        
+        
+        //更换选择
+        /*dise.on("touchstart",genghuan);
+        function genghuan(){
+        	
+        }*/
+    </script> 
+</body>
+</html>
